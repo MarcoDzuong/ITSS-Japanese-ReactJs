@@ -1,29 +1,20 @@
-function Filter({ value, onChange }) {
-
-    const handleClick = (key, e) => {
-        e.preventDefault();
-        onChange(key);
-    };
-
-    return (
-        <div className="panel-tabs">
-            <a
-                href="#"
-                onClick={handleClick.bind(null, 'ALL')}
-                className={value === 'ALL' ?  'is-active' : ''}
-            >全て</a>
-            <a
-                href="#"
-                onClick={handleClick.bind(null, 'TODO')}
-                className={value === 'TODO' ?  'is-active' : ''}
-            >未完了</a>
-            <a
-                href="#"
-                onClick={handleClick.bind(null, 'DONE')}
-                className={value === 'DONE' ?  'is-active' : ''}
-            >完了済み</a>
-        </div>
-    );
+function Filter({currentStatus, filterByStatus}) {
+  const statusList = ["全て", "選択", "未選択"];
+  return (
+    <div className="w-50 m-auto mt-3 d-flex justify-content-evenly">
+      { statusList.map((status, index)=>
+          <span className={status===currentStatus ? "active filter":"filter"} 
+            key={index}
+            onClick={()=>{
+              console.log("change");
+              filterByStatus(status)}}  
+          >
+            {status}
+          </span>
+        )
+      }
+    </div>
+  );
 }
 
 export default Filter
