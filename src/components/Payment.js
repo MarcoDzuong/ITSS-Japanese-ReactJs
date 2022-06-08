@@ -2,7 +2,8 @@ import { useState } from 'react';
 import PaymentItem from './PaymentItem';
 import Bill from './Bill';
 import Filter from './Filter';
-
+import useLocalStorage from '../hook/localStorage'
+import React from 'react';
   // const productList = [
   //   {id: 1, name: "milk", price: 8000},
   //   {id: 2, name: "ice scream", price: 17000},
@@ -11,19 +12,18 @@ import Filter from './Filter';
   //   {id: 5, name: "snack", price: 5000},
   //   {id: 6, name: "candy", price: 12000},
   //   {id: 7, name: "chocolate", price: 25000},
-  // ];  
+  // ];
+
+
 
 function Payment() {
 
-  const [stockList, setStockList] = useState([
+  const data = [
     {id: 1, name: "milk", price: 8000, quantity: 1, choosen: true},
     {id: 2, name: "ice scream", price: 17000, quantity: 1, choosen: true},
     {id: 3, name: "yakult", price: 10000, quantity: 2, choosen: false},
-    {id: 4, name: "bread", price: 15000, quantity: 1, choosen: true},
-    {id: 5, name: "snack", price: 5000, quantity: 1, choosen: false},
-    {id: 6, name: "candy", price: 12000, quantity: 1, choosen: true},
-    {id: 7, name: "chocolate", price: 25000, quantity: 1, choosen: false},
-  ]);
+  ]
+  const [stockList, setStockList] = useLocalStorage("stockList", data);
 
   const statusList = ["全て", "選択", "未選択"];
   const [status, setStatus] = useState(statusList[0]);

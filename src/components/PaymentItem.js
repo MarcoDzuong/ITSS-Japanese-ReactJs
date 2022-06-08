@@ -1,3 +1,5 @@
+import React  from 'react';
+
 function PaymentItem({item, setItemChecked, updateStockList, deleteItem}) {
   return (
    <tr style={{color: item.choosen?"black":"gray"}}>
