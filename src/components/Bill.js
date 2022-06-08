@@ -1,5 +1,6 @@
 import BillItem from './BillItem';
 import { useEffect } from 'react';
+import React from 'react';
 
 function Bill({stockList, calculateTotal, resetStock}) {
   
